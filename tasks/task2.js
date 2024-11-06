@@ -11,26 +11,16 @@ const students = [
 // 1. getTopScoringStudents
 // Приймає масив студентів та повертає масив імен студентів, які мають оцінку більше 80
 function getTopScoringStudents(students) {
-  let newArr =[];
-  let k=0;
-  for(let i =0;i<students.length;i++){
-    if(students[i].score>80){
-      newArr[k]=students[i].name;
-      k++;
-    }
-  }
-  console.log(newArr);
-  return newArr;
+  return students = (students.filter((student)=>student.score>80)).map((person)=>person.name);
 }
-
+  
 // 2. getAverageAge
 // Приймає масив студентів та повертає середній вік студентів
 function getAverageAge(students) {
-  let sumAge = 0;
-  for(let i =0;i<students.length;i++){
-    sumAge+=students[i].age;
-  }
-  return sumAge/students.length;
+  let sum=0;
+  students = students.map((student)=>student.age)
+  students.forEach((el) => sum+=el);
+  return sum/students.length;
 }
 
 // 3. addStudent
@@ -41,20 +31,8 @@ function addStudent(students, student) {
 
 // 4. removeStudentByName
 // Приймає масив студентів та ім'я студента, якого потрібно видалити, і повертає новий масив без цього студента
-function removeStudentByName(students, char) {
-  console.log("name is =",char);
-  let index =0;
-  console.log('dfjjflfj',students[3].name);
-  for(let i = 0;i<students.length;i++){
-    if(students[i].name===char){
-    index=i;
-  //  break;
-  }
- }
- console.log(index);
- let newArr = students.splice(index,1);
- console.log(students);
- return students;
+function removeStudentByName(students, name) {
+let newArr = students.filter((student)=>student.name!==name);
+ return newArr;
 }
-
 module.exports = { getTopScoringStudents, getAverageAge, addStudent, removeStudentByName };
